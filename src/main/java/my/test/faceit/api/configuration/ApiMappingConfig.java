@@ -10,4 +10,9 @@ public class ApiMappingConfig {
     public ApiJobMapper apiJobMapper(){
         return Mappers.getMapper(ApiJobMapper.class);
     }
+
+    @Bean("remoteResponseApiMapper")
+    public RemoteResponseApiMapper remoteResponseApiMapper(){
+        return Mappers.getMapper(RemoteResponseApiMapper.class);
+    }
 }

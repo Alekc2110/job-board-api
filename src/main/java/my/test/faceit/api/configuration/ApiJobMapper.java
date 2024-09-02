@@ -10,8 +10,6 @@ import java.util.List;
 public interface ApiJobMapper {
     JobDto modelToDto(Job job);
     List<JobDto> modelToDto(List<Job> job);
-    Job DtoToModel(JobDto entity);
-    List<Job> DtoToModel(List<JobDto> entity);
-
-
+    Job dtoToModel(JobDto dto);
+    List<Job> dtoToModel(List<JobDto> dtoList);
 }
