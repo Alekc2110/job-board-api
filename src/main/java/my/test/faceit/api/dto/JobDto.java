@@ -12,9 +12,6 @@ import java.util.List;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JobDto {
-
-    private Long id;
-
     private String slug;
     private String companyName;
     private String title;

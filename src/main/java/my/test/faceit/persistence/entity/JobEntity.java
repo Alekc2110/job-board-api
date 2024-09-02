@@ -15,7 +15,7 @@ public class JobEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true)
     private String slug;
     @Column(name = "company_name")
     private String companyName;
@@ -28,9 +28,19 @@ public class JobEntity {
     private String url;
 
     @ElementCollection
+    @CollectionTable(
+            name = "tags",
+            joinColumns = @JoinColumn(name = "job_entity_id")
+    )
+    @Column(name = "tags")
     private List<String> tags;
 
     @ElementCollection
+    @CollectionTable(
+            name = "job_types",
+            joinColumns = @JoinColumn(name = "job_entity_id")
+    )
+    @Column(name = "job_types")
     private List<String> jobTypes;
 
     private String location;

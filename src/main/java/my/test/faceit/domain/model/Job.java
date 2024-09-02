@@ -10,9 +10,7 @@ import java.util.List;
 @Setter
 @Builder
 public class Job {
-
     private Long id;
-
     private String slug;
     private String companyName;
     private String title;
