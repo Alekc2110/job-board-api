@@ -4,7 +4,7 @@ import my.test.faceit.api.configuration.RemoteResponseApiMapper;
 import my.test.faceit.api.dto.remoteResponse.ApiResponse;
 import my.test.faceit.api.dto.remoteResponse.JobResponse;
 import my.test.faceit.domain.model.Job;
-import my.test.faceit.domain.service.JobFetchService;
+import my.test.faceit.domain.service.JobService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,12 +18,12 @@ public class JobFetchScheduler {
 
     @Value("${remote.url}")
     private String remoteUrl;
-    private final JobFetchService jobFetchService;
+    private final JobService jobService;
     private final RestTemplate restTemplate;
     private final RemoteResponseApiMapper mapper;
 
-    public JobFetchScheduler(JobFetchService jobFetchService, RestTemplate restTemplate, @Qualifier("remoteResponseApiMapper") RemoteResponseApiMapper mapper) {
-        this.jobFetchService = jobFetchService;
+    public JobFetchScheduler(JobService jobService, RestTemplate restTemplate, @Qualifier("remoteResponseApiMapper") RemoteResponseApiMapper mapper) {
+        this.jobService = jobService;
         this.restTemplate = restTemplate;
         this.mapper = mapper;
     }
@@ -36,7 +36,7 @@ public class JobFetchScheduler {
             List<JobResponse> dataList = jobResponse.getData();
 
             List<Job> jobList = mapper.dtoToModel(dataList);
-            jobFetchService.fetchAndSaveJobs(jobList);
+            jobService.fetchAndSaveJobs(jobList);
         }
     }
 }

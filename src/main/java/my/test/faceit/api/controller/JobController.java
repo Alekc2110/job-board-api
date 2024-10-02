@@ -36,7 +36,7 @@ public class JobController {
      */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Page<JobDto> getAllJobs(
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(required = false, defaultValue = "createdAt") String sortBy) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).descending());

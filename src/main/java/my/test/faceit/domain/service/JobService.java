@@ -24,4 +24,8 @@ public class JobService {
     public List<LocationStatistics> getLocationStatistics() {
         return jobRepository.getLocationStatistics();
     }
+
+    public void fetchAndSaveJobs(List<Job> list) {
+        jobRepository.saveAll(list);
+    }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface JpaJobRepository extends JpaRepository<JobEntity, Long> {
     @Query(value = """
-            SELECT * FROM  job_entity je
+            SELECT * FROM job_entity je
                   INNER JOIN tags t2 on je.id = t2.job_entity_id
                   WHERE t2.tags IN (
                           SELECT t.tags FROM job_entity jb
