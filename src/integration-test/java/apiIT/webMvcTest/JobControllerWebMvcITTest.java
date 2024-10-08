@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -29,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @WebMvcTest
 @ContextConfiguration(classes = {ApiTestConfig.class, ApiMappingConfig.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class JobControllerWebMvcITTest {
     @Autowired
     private MockMvc mockMvc;
@@ -46,7 +48,7 @@ public class JobControllerWebMvcITTest {
         //when
         mockMvc.perform(get("/api/jobs").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-        //then
+                //then
                 .andExpect(content().contentType("application/json"))
                 .andExpect(status().is(200))
                 .andExpect(header().string("Content-Type", "application/json"))
@@ -63,16 +65,4 @@ public class JobControllerWebMvcITTest {
         return new PageImpl<>(list);
     }
 
-//    private List<Job> getMappedListOfJobs() {
-//        return List.of(Job.builder().id(1L).remote(true).title("economist").createdAt(12355666L).companyName("Company1").build(),
-//                Job.builder().id(2L).remote(false).title("economist").createdAt(12354777L).companyName("Company2").build(),
-//                Job.builder().id(3L).remote(true).title("economist").createdAt(12358999L).companyName("Company3").build(),
-//                Job.builder().id(4L).remote(true).title("economist").createdAt(12355555L).companyName("Company4").build(),
-//                Job.builder().id(5L).remote(false).title("economist").createdAt(123557722L).companyName("Company5").build(),
-//                Job.builder().id(6L).remote(true).title("economist").createdAt(12354722424L).companyName("Company6").build(),
-//                Job.builder().id(7L).remote(true).title("economist").createdAt(1235272242L).companyName("Company7").build(),
-//                Job.builder().id(8L).remote(false).title("economist").createdAt(12355242477L).companyName("Company8").build(),
-//                Job.builder().id(9L).remote(true).title("economist").createdAt(12357895244L).companyName("Company9").build(),
-//                Job.builder().id(10L).remote(true).title("economist").createdAt(12355553335L).companyName("Company10").build());
-//    }
 }
