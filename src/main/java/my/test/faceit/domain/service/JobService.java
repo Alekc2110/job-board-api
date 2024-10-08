@@ -7,15 +7,19 @@ import my.test.faceit.persistence.interfaces.JobRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional(readOnly = true)
 @AllArgsConstructor
 @Service
 public class JobService {
     private final JobRepository jobRepository;
     public Page<Job> getAllJobs(Pageable pageable) {
-        return jobRepository.findAll(pageable);
+        System.out.println("");
+        Page<Job> all = jobRepository.findAll(pageable);
+        return all;
     }
 
     public List<Job> getTop10PopularJobs() {
@@ -25,6 +29,7 @@ public class JobService {
         return jobRepository.getLocationStatistics();
     }
 
+    @Transactional
     public void fetchAndSaveJobs(List<Job> list) {
         jobRepository.saveAll(list);
     }
