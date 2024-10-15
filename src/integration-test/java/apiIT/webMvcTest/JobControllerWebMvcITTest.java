@@ -1,6 +1,5 @@
 package apiIT.webMvcTest;
 
-import apiIT.webMvcTest.ApiTestConfig;
 import my.test.faceit.api.configuration.ApiMappingConfig;
 import my.test.faceit.domain.model.Job;
 import my.test.faceit.persistence.interfaces.JobRepository;
@@ -13,6 +12,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;

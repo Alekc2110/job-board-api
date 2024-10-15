@@ -5,6 +5,7 @@ import my.test.faceit.api.controller.JobController;
 import my.test.faceit.domain.service.JobService;
 import my.test.faceit.persistence.interfaces.JobRepository;
 import org.mockito.Mockito;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.annotation.Bean;
@@ -30,5 +31,10 @@ public class ApiTestConfig {
     @Bean
     public TestRestTemplate testRestTemplate(){
         return new TestRestTemplate();
+    }
+
+    @Bean
+    public CommandLineRunner commandLineRunner(){
+        return Mockito.mock(CommandLineRunner.class);
     }
 }

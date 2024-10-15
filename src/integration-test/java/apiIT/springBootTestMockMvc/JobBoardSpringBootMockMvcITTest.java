@@ -4,8 +4,10 @@ import my.test.faceit.JobBoardApiApplication;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
@@ -20,12 +22,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JobBoardApiApplication.class)
 @ActiveProfiles("testh2")
 @AutoConfigureMockMvc
-@Sql(value = "/apiIT/springBootTestMockMvc/dataH2/data-testh2.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@Sql(value = "/apiIT/dataH2/data-testh2.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class JobBoardSpringBootMockMvcITTest {
 
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    private CommandLineRunner commandLineRunner;
 
     @Test
     @DisplayName("Should return pages of all jobs default behavior")

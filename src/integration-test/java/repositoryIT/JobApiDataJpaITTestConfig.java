@@ -11,7 +11,6 @@ import my.test.faceit.persistence.interfaces.JobRepository;
 import my.test.faceit.persistence.jparepository.JobRepositoryImpl;
 import my.test.faceit.persistence.jparepository.JpaJobRepository;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -20,9 +19,6 @@ import org.springframework.context.annotation.Import;
 @TestConfiguration
 @Import(value = {ApiMappingConfig.class, PersistenceMappingConfig.class})
 public class JobApiDataJpaITTestConfig {
-    @Autowired
-    @Qualifier("jpaJobMapper")
-    private JpaJobMapper jpaJobMapper;
 
     @Bean
     public JobFetchScheduler scheduler(){
@@ -37,7 +33,6 @@ public class JobApiDataJpaITTestConfig {
     public JobRepository jobRepository(JpaJobRepository jpaJobRepository, JpaJobMapper jpaJobMapper){
         return new JobRepositoryImpl(jpaJobRepository, jpaJobMapper);
     }
-
     @Bean
     public JobController jobController(JobService jobService, ApiJobMapper apiJobMapper){
         return new JobController(jobService, apiJobMapper);
