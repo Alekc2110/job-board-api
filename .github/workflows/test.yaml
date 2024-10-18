@@ -1,6 +1,7 @@
   name: test stage
   on: push
   jobs:
+    testing:
     runs-on: Ubuntu 24.04
     steps:
       - name: get repository code
