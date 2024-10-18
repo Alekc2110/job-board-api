@@ -12,7 +12,9 @@
              distribution: 'temurin'
              java-version: '17'
              architecture: x64
-         - name: clean and runs integration tests with Maven
-           run: mvn clean verify
+         - name: clean and compile project with Maven
+           run: mvn clean compile
+         - name: run integration tests
+           run: mvn verify
          - name: package project
-           run: mvn package
+           run: mvn -DskipTests=true package
