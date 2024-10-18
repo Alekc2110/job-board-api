@@ -1,11 +1,12 @@
   name: test stage
   on: push
   jobs:
-    runs-on: Ubuntu 24.04
-    steps:
-      - name: get repository code
-        uses: actions/checkout@v3
-      - name: clean and package project with Maven wrapper
-        run: ./mvnw clean package
-      - name: verify integration-tests with Maven wrapper
-        run: ./mvnw verify
+    test:
+       runs-on: Ubuntu 24.04
+       steps:
+         - name: get repository code
+           uses: actions/checkout@v3
+         - name: clean and package project with Maven wrapper
+           run: ./mvnw clean package
+         - name: verify integration-tests with Maven wrapper
+           run: ./mvnw verify
