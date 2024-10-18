@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JobBoardApiApplication.class)
 @ActiveProfiles("testh2")
 @AutoConfigureMockMvc
-@Sql(value = "/apiIT/dataH2/data-testh2.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@Sql(value = "/data-testh2.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class JobBoardSpringBootMockMvcITTest {
 

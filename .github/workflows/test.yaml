@@ -12,7 +12,7 @@
              distribution: 'temurin'
              java-version: '17'
              architecture: x64
-         - name: clean and package project with Maven wrapper
-           run: mvn --batch-mode --update-snapshots clean package
-         - name: verify integration-tests with Maven wrapper
-           run: mvn verify
+         - name: clean and runs integration tests with Maven
+           run: mvn clean verify
+         - name: package project
+           run: mvn package
