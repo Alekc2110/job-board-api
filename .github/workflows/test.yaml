@@ -2,10 +2,15 @@
   on: push
   jobs:
     test:
-       runs-on: Ubuntu 24.04
+       runs-on: ubuntu-latest
        steps:
          - name: get repository code
-           uses: actions/checkout@v3
+           uses: actions/checkout@v4
+         - name: set up JDK 11
+           uses: actions/setup-java@v4
+           with:
+             distribution: '<distribution>'
+             java-version: 11
          - name: clean and package project with Maven wrapper
            run: ./mvnw clean package
          - name: verify integration-tests with Maven wrapper
