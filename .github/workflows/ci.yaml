@@ -39,7 +39,7 @@
        steps:
          - name: get repository code
            uses: actions/checkout@v4
-         - name: set up JDK 17
+         - name: set up JDK from Matrix
            uses: actions/setup-java@v4
            with:
             distribution: 'temurin'
@@ -47,3 +47,5 @@
             cache: 'maven'
          - name: package project
            run: mvn -DskipTests=true package
+
+
