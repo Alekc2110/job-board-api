@@ -12,6 +12,13 @@
              distribution: 'temurin'
              java-version: '17'
              architecture: x64
+         - name: cache local Maven repository
+           uses: actions/cache@v4
+           with:
+              path: ~/.m2/repository
+              key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+              restore-keys: |
+                   ${{ runner.os }}-maven-
          - name: clean and compile project with Maven
            run: mvn clean compile
          - name: run integration tests
