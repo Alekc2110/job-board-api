@@ -1,5 +1,10 @@
 name: CD
-on: workflow_dispatch
+on:
+ workflow_run:
+    workflows: CI
+    branches: [master]
+    types:
+      - completed
 jobs:
   artifact-creation:
     runs-on: ubuntu-latest
