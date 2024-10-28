@@ -32,6 +32,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-        run: mvn -DskipTests=true package
+      - run: mvn -DskipTests=true package
       - name: build Docker image
         run: docker build . -t alekckorsh/hospital
