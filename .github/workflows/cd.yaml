@@ -36,6 +36,6 @@ jobs:
       - name: build and push Docker image
         run: | 
          docker build . -t alekckorsh/jobboardapi
-         echo ${{ env.DOCKERHUB_CREDENTIALS_PSW }}
-         docker login -u ${{ env.DOCKERHUB_CREDENTIALS_USR }} --password-stdin
+         echo ${{ secrets.DOCKERHUB_CREDENTIALS_PSW }}
+         docker login -u ${{ secrets.DOCKERHUB_CREDENTIALS_USR }} --password-stdin
          docker push alekckorsh/jobboardapi:latest
