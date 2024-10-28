@@ -13,6 +13,7 @@
             java-version: '17'
             cache: 'maven'
     test:
+       needs: cache
        runs-on: ubuntu-latest
        steps:
 #         - name: get repository code
